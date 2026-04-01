@@ -1,22 +1,58 @@
-import ItemCard from '../components/ItemCard';
-import { useState , useEffect } from 'react';
+import { useState, useEffect } from 'react'; // usestate is used to automatically update the state of the component and re render the page
+import ItemCard from '../components/ItemCard'; // useeffect is used to fetch the data from the backend
+import './Home.css';
+
 function Home() {
     const [items, setItems] = useState([]);
+    
     useEffect(() => {
         fetch('http://localhost:3000/items')
         .then(res => res.json())
         .then(data => {
-            console.log("fetched:", data)
             setItems(data);
         });
     }, []);
-console.log(items);
+
     return (
         <div>
-        {items.map(items => (
-            <ItemCard key={items._id} item={items} />
-        ))}
+            {/* Hero Section */}
+            <header className="hero">
+                <div className="hero-content">
+                    <div className="hero-text">
+                        <h1>Help reunite people with their stuff.</h1>
+                        <p>Welcome to the digital bulletin board. Fast, friendly, and community-driven.</p>
+                    </div>
+                    <div className="hero-cards">
+                        <div className="hero-card">
+                            <span>😟</span>
+                            <button className="btn-primary">Report Lost Item</button>
+                        </div>
+                        <div className="hero-card">
+                            <span>✅</span>
+                            <button className="btn-secondary">I Found Something</button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            {/* Items Grid */}
+            <main className="main-content">
+                <div className="toolbar">
+                    <div className="filters">
+                        <span className="filter-label">View:</span>
+                        <button className="filter-btn active">All Items</button>
+                        <button className="filter-btn">Lost Only</button>
+                        <button className="filter-btn">Found Only</button>
+                    </div>
+                </div>
+                <div className="item-grid">
+                    {items.map(item => (
+                        <ItemCard key={item._id} item={item} />
+                    ))}
+                </div>
+            </main>
         </div>
     );
 }
+
 export default Home;
