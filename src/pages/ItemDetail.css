@@ -1,0 +1,89 @@
+.detail-page {
+    min-height: 100vh;
+    background-color: #FDFBF5;
+    padding: 48px;
+    display: flex;
+    justify-content: center;
+}
+
+.detail-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 620px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: #E98741;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: left;
+    padding: 0;
+}
+
+.detail-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-badge.lost {
+    background: #E98741;
+    color: white;
+}
+
+.detail-badge.found {
+    background: #22c55e;
+    color: white;
+}
+
+.detail-card h2 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: #33312E;
+    margin: 0;
+}
+
+.detail-card p {
+    color: #7A746D;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.detail-card img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    max-height: 300px;
+}
+
+.contact-box {
+    background: #f0fdf4;
+    border: 1px solid #22c55e;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.contact-box h4 {
+    color: #22c55e;
+    font-family: var(--font-display);
+    margin-bottom: 8px;
+}
+
+.contact-box p {
+    color: #33312E;
+    font-weight: 600;
+}
