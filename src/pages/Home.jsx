@@ -1,10 +1,13 @@
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react'; // usestate is used to automatically update the state of the component and re render the page
 import ItemCard from '../components/ItemCard'; // useeffect is used to fetch the data from the backend
 import './Home.css';
 
 function Home() {
+    const navigate = useNavigate();
     const [items, setItems] = useState([]);
-    
+    const [filter , setFilter] = useState('all');
+    const displayed = filter === 'all' ? items : items.filter(i => i.type === filter);
     useEffect(() => {
         fetch('http://localhost:3000/items')
         .then(res => res.json())
@@ -25,11 +28,11 @@ function Home() {
                     <div className="hero-cards">
                         <div className="hero-card">
                             <span>😟</span>
-                            <button className="btn-primary">Report Lost Item</button>
+                            <button className="btn-primary" onClick={() => navigate('/post?type=lost')}>Report Lost Item</button>
                         </div>
                         <div className="hero-card">
                             <span>✅</span>
-                            <button className="btn-secondary">I Found Something</button>
+                            <button className="btn-secondary" onClick={() => navigate('/post?type=found')} > I Found Something </button>
                         </div>
                     </div>
                 </div>
@@ -40,13 +43,13 @@ function Home() {
                 <div className="toolbar">
                     <div className="filters">
                         <span className="filter-label">View:</span>
-                        <button className="filter-btn active">All Items</button>
-                        <button className="filter-btn">Lost Only</button>
-                        <button className="filter-btn">Found Only</button>
+                        <button className={`filter-btn ${filter === 'all' ? 'active' : ''}`} onClick={() => setFilter('all')}>All Items</button>
+                        <button className={`filter-btn ${filter === 'lost' ? 'active' : ''}`} onClick={() => setFilter('lost')}>Lost Only</button>
+                        <button className={`filter-btn ${filter === 'found' ? 'active' : ''}`} onClick={() => setFilter('found')}>Found Only</button>
                     </div>
                 </div>
                 <div className="item-grid">
-                    {items.map(item => (
+                    {displayed.map(item => (
                         <ItemCard key={item._id} item={item} />
                     ))}
                 </div>
