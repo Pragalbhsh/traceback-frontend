@@ -1,3 +1,4 @@
+import API from '../api';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react'; // usestate is used to automatically update the state of the component and re render the page
 import ItemCard from '../components/ItemCard'; // useeffect is used to fetch the data from the backend
@@ -9,7 +10,7 @@ function Home() {
     const [filter , setFilter] = useState('all');
     const displayed = filter === 'all' ? items : items.filter(i => i.type === filter);
     useEffect(() => {
-        fetch('https://traceback-api-55fy.onrender.com')
+        fetch(`${API}/items`)
         .then(res => res.json())
         .then(data => {
             setItems(data);

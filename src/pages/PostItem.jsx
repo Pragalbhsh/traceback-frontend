@@ -1,3 +1,4 @@
+import API from '../api';
 import './PostItem.css';
 import { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -32,7 +33,7 @@ function PostItem() {
         if (image) formData.append('image', image);
 
         try {
-            const res = await fetch('https://traceback-api-55fy.onrender.com', {
+            const res = await fetch(`${API}/items`, {
                 method: 'POST',
                 body: formData
             });

@@ -1,3 +1,4 @@
+import API from '../api';
 import { useState , useEffect } from 'react';
 import { useParams , useNavigate } from 'react-router-dom';
 import './ItemDetail.css';
@@ -8,7 +9,7 @@ function ItemDetail () {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`https://traceback-api-55fy.onrender.com`)
+        fetch(`${API}/items/${id}`)
         .then(res => res.json())
         .then(data => setItem(data));
     }, [id]);
