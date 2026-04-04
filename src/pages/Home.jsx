@@ -9,7 +9,7 @@ function Home() {
     const [filter , setFilter] = useState('all');
     const displayed = filter === 'all' ? items : items.filter(i => i.type === filter);
     useEffect(() => {
-        fetch('http://localhost:3000/items')
+        fetch('https://traceback-api-55fy.onrender.com')
         .then(res => res.json())
         .then(data => {
             setItems(data);

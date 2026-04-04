@@ -32,7 +32,7 @@ function PostItem() {
         if (image) formData.append('image', image);
 
         try {
-            const res = await fetch('http://localhost:3000/items', {
+            const res = await fetch('https://traceback-api-55fy.onrender.com', {
                 method: 'POST',
                 body: formData
             });

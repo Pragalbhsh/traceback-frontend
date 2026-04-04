@@ -8,7 +8,7 @@ function ItemDetail () {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:3000/items/${id}`)
+        fetch(`https://traceback-api-55fy.onrender.com`)
         .then(res => res.json())
         .then(data => setItem(data));
     }, [id]);
